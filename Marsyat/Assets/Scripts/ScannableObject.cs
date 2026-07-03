@@ -9,14 +9,21 @@ public class ScannableObject : MonoBehaviour
     private Material scanMat;
     private bool isHovered = false;
     private bool isScanned = false;
-
+    [Header("Info Panel")]
+    public GameObject infoPanel; // drag the info GameObject here
+    public float infoDisplayDuration = 3f; // how long it stays visible
+    PanelSwitcher switchPanel;
     void Awake()
     {
+        switchPanel = GameObject.Find("RoverUI").GetComponent<PanelSwitcher>();
         interactable = GetComponent<XRSimpleInteractable>();
         targetRenderer = this.GetComponent<Renderer>();
         scanMat = targetRenderer.material; // instance copy
         interactable.hoverEntered.AddListener(_ => OnHoverEntered());
         interactable.hoverExited.AddListener(_ => OnHoverExited());
+
+        if (infoPanel != null)
+            infoPanel.SetActive(false); // make sure it starts hidden
     }
 
     void OnHoverEntered()
@@ -42,9 +49,10 @@ public class ScannableObject : MonoBehaviour
 
     IEnumerator ScanRoutine()
     {
+        switchPanel.Show();
         isScanned = true;
         float t = 0f, duration = 1.5f;
-        float minVal = -0.7f, maxVal = 0.19f;
+        float minVal = -0.9f, maxVal = 0.19f;
         while (t < duration)
         {
             t += Time.deltaTime;
@@ -53,5 +61,13 @@ public class ScannableObject : MonoBehaviour
             yield return null;
         }
         scanMat.SetFloat("ScanProgress", maxVal);
+
+        // show info panel after scan completes
+        if (infoPanel != null)
+        {
+            infoPanel.SetActive(true);
+            yield return new WaitForSeconds(infoDisplayDuration);
+            infoPanel.SetActive(false);
+        }
     }
 }

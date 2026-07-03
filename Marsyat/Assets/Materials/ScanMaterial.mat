@@ -97,7 +97,7 @@ Material:
     m_Floats:
     - GridDensity: 20
     - ObjectHeight: -1
-    - ScanProgress: -0.68
+    - ScanProgress: -0.74
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
