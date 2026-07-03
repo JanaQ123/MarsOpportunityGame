@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.02 57.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #d5a945;
+        stroke-miterlimit: 10;
+        stroke-width: .99px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="OBJECTS">
+    <g>
+      <g>
+        <polyline class="cls-1" points=".49 24.35 .49 .49 23.09 .49"/>
+        <polyline class="cls-1" points="56.53 33.28 56.46 57.14 33.87 57.08"/>
+      </g>
+      <g>
+        <path class="cls-2" d="M27.37,42.73c-.84,0-1.96.28-2.52,1.12-.56.56-1.12,1.68-1.12,2.52s.28,1.96,1.12,2.52c.56.56,1.68,1.12,2.52,1.12s1.96-.28,2.52-1.12c.56-.56,1.12-1.68,1.12-2.52s-.28-1.96-1.12-2.52c-.56-.84-1.68-1.12-2.52-1.12Z"/>
+        <path class="cls-2" d="M27.37,7.75c-1.96,0-3.64,1.68-3.64,3.64v24.62c0,1.96,1.68,3.64,3.64,3.64s3.64-1.68,3.64-3.64V11.39c0-1.96-1.68-3.64-3.64-3.64Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

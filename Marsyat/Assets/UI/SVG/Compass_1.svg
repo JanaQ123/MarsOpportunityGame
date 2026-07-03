@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.98 61.98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #d5a945;
+        stroke-miterlimit: 10;
+        stroke-width: .99px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: rgba(10, 36, 89, .65);
+      }
+
+      .cls-4 {
+        fill: #a5a5a5;
+        opacity: .58;
+      }
+    </style>
+  </defs>
+  <g id="OBJECTS">
+    <g>
+      <rect class="cls-4" width="61.98" height="61.98"/>
+      <g id="E226_Compass_map_navigation" data-name="E226, Compass, map, navigation">
+        <g>
+          <path class="cls-2" d="M46.15,17.1l-7.6,22.68-22.68,7.6,8.83-21.45,21.45-8.83Z"/>
+          <path class="cls-3" d="M31.51,28.61c2.34,0,4.25,1.9,4.25,4.24s-1.9,4.25-4.25,4.25-4.25-1.9-4.25-4.25,1.9-4.24,4.25-4.24Z"/>
+        </g>
+      </g>
+      <g>
+        <polyline class="cls-1" points="2.96 26.68 2.96 2.82 25.55 2.82"/>
+        <polyline class="cls-1" points="58.99 35.61 58.93 59.47 36.33 59.41"/>
+      </g>
+    </g>
+  </g>
+</svg>

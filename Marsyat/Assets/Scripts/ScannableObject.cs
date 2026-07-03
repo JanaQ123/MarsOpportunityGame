@@ -4,8 +4,8 @@ using System.Collections;
 
 public class ScannableObject : MonoBehaviour
 {
-    [SerializeField] private XRSimpleInteractable interactable;
-    [SerializeField] private Renderer targetRenderer;
+    private XRSimpleInteractable interactable;
+    private Renderer targetRenderer;
     private Material scanMat;
     private bool isHovered = false;
     private bool isScanned = false;
@@ -13,6 +13,7 @@ public class ScannableObject : MonoBehaviour
     void Awake()
     {
         interactable = GetComponent<XRSimpleInteractable>();
+        targetRenderer = this.GetComponent<Renderer>();
         scanMat = targetRenderer.material; // instance copy
         interactable.hoverEntered.AddListener(_ => OnHoverEntered());
         interactable.hoverExited.AddListener(_ => OnHoverExited());
@@ -43,7 +44,7 @@ public class ScannableObject : MonoBehaviour
     {
         isScanned = true;
         float t = 0f, duration = 1.5f;
-        float minVal = -0.52f, maxVal = 0.19f;
+        float minVal = -0.7f, maxVal = 0.19f;
         while (t < duration)
         {
             t += Time.deltaTime;

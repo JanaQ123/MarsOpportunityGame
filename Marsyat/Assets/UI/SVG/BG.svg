@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328.29 228.39">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0a2459;
+        opacity: .65;
+      }
+
+      .cls-2 {
+        stroke: #2f103a;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #9d7f86;
+      }
+
+      .cls-5 {
+        fill: #5d713c;
+      }
+
+      .cls-6 {
+        opacity: .83;
+      }
+
+      .cls-3 {
+        stroke: #d5a945;
+        stroke-width: 2px;
+      }
+
+      .cls-7 {
+        fill: #d5a945;
+      }
+    </style>
+  </defs>
+  <g id="OBJECTS">
+    <g>
+      <g class="cls-6">
+        <polygon class="cls-4" points=".5 38.64 .5 224.45 284.81 224.45 322.95 186.31 322.95 .5 38.64 .5 .5 38.64"/>
+        <polygon class="cls-2" points=".5 38.64 .5 224.45 284.81 224.45 322.95 186.31 322.95 .5 38.64 .5 .5 38.64"/>
+        <polygon class="cls-1" points=".5 38.64 .5 224.45 284.81 224.45 322.95 186.31 322.95 .5 38.64 .5 .5 38.64"/>
+      </g>
+      <polyline class="cls-3" points="313.75 7.32 44 7.32 8.1 43.22 8.1 217.65"/>
+      <polygon class="cls-5" points="301.76 200.42 282.39 219.79 241.91 219.79 234.47 227.23 287.43 227.23 302.14 212.51 301.76 200.42"/>
+      <polygon class="cls-5" points="117.38 221.82 244.82 221.82 252.09 228.39 124.65 228.39 117.38 221.82"/>
+      <polygon class="cls-7" points="117.13 228.39 110.45 221.7 106.76 221.7 113.33 228.28 117.13 228.39"/>
+      <polygon class="cls-7" points="106.76 228.39 100.08 221.7 96.4 221.7 102.97 228.28 106.76 228.39"/>
+      <polygon class="cls-7" points="96.4 228.39 89.71 221.7 86.03 221.7 92.6 228.28 96.4 228.39"/>
+      <polygon class="cls-7" points="86.03 228.39 79.35 221.7 75.66 221.7 82.23 228.28 86.03 228.39"/>
+      <rect class="cls-5" x="317.52" y="65.83" width="10.77" height="82.93" transform="translate(645.8 214.58) rotate(180)"/>
+    </g>
+  </g>
+</svg>
