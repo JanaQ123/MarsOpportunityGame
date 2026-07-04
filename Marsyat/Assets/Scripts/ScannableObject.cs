@@ -43,13 +43,12 @@ public class ScannableObject : MonoBehaviour
     public void TriggerScan()
     {
         if (isScanned) return;
-        
+        switchPanel.ShowDiscovery();
         StartCoroutine(ScanRoutine());
     }
 
     IEnumerator ScanRoutine()
     {
-        switchPanel.Show();
         isScanned = true;
         float t = 0f, duration = 1.5f;
         float minVal = -0.9f, maxVal = 0.19f;

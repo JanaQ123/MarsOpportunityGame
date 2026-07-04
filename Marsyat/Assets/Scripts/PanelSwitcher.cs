@@ -6,27 +6,33 @@ public class PanelSwitcher : MonoBehaviour
     bool showDisc;
     public void ShowPanel(GameObject panelToShow)
     {
+        // Special case for panel 0
+        if (panelToShow == allPanels[0])
+        {
+            print("i got 1");
+            HideAllPanels();
+
+            if (showDisc)
+                allPanels[0].SetActive(true);
+            else
+                allPanels[3].SetActive(true);
+
+            return;
+        }
+
+        // Normal behavior
         foreach (GameObject panel in allPanels)
         {
-            if (panelToShow == allPanels[0])
-            {
-                if (!showDisc)
-                {
-                    allPanels[3].SetActive(true);
-                    break;
-                }
-                else
-                {
-                    allPanels[3].SetActive(false);
-                    allPanels[0].SetActive(true);
-                }
-
-            }
             panel.SetActive(panel == panelToShow);
         }
     }
 
-    public void Show()
+    private void HideAllPanels()
+    {
+        foreach (GameObject panel in allPanels)
+            panel.SetActive(false);
+    }
+    public void ShowDiscovery()
     {
         showDisc =true;
     }

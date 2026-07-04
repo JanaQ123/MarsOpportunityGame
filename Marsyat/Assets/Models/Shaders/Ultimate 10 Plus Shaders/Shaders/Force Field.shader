@@ -1,55 +1,18 @@
-﻿/*
-               ███████╗░█████╗░██████╗░░█████╗░███████╗  ███████╗██╗███████╗██╗░░░░░██████╗░
-               ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔════╝  ██╔════╝██║██╔════╝██║░░░░░██╔══██╗
-               █████╗░░██║░░██║██████╔╝██║░░╚═╝█████╗░░  █████╗░░██║█████╗░░██║░░░░░██║░░██║
-               ██╔══╝░░██║░░██║██╔══██╗██║░░██╗██╔══╝░░  ██╔══╝░░██║██╔══╝░░██║░░░░░██║░░██║
-               ██║░░░░░╚█████╔╝██║░░██║╚█████╔╝███████╗  ██║░░░░░██║███████╗███████╗██████╔╝
-               ╚═╝░░░░░░╚════╝░╚═╝░░╚═╝░╚════╝░╚══════╝  ╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═════╝░
-
-                           ░██████╗██╗░░██╗░█████╗░██████╗░███████╗██████╗░
-                           ██╔════╝██║░░██║██╔══██╗██╔══██╗██╔════╝██╔══██╗
-                           ╚█████╗░███████║███████║██║░░██║█████╗░░██████╔╝
-                           ░╚═══██╗██╔══██║██╔══██║██║░░██║██╔══╝░░██╔══██╗
-                           ██████╔╝██║░░██║██║░░██║██████╔╝███████╗██║░░██║
-                           ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝
-
-                █▀▀▄ █──█ 　 ▀▀█▀▀ █──█ █▀▀ 　 ░█▀▀▄ █▀▀ ▀█─█▀ █▀▀ █── █▀▀█ █▀▀█ █▀▀ █▀▀█ 
-                █▀▀▄ █▄▄█ 　 ─░█── █▀▀█ █▀▀ 　 ░█─░█ █▀▀ ─█▄█─ █▀▀ █── █──█ █──█ █▀▀ █▄▄▀ 
-                ▀▀▀─ ▄▄▄█ 　 ─░█── ▀──▀ ▀▀▀ 　 ░█▄▄▀ ▀▀▀ ──▀── ▀▀▀ ▀▀▀ ▀▀▀▀ █▀▀▀ ▀▀▀ ▀─▀▀
-____________________________________________________________________________________________________________________________________________
-
-        ▄▀█ █▀ █▀ █▀▀ ▀█▀ ▀   █░█ █░░ ▀█▀ █ █▀▄▀█ ▄▀█ ▀█▀ █▀▀   ▄█ █▀█ ▄█▄   █▀ █░█ ▄▀█ █▀▄ █▀▀ █▀█ █▀
-        █▀█ ▄█ ▄█ ██▄ ░█░ ▄   █▄█ █▄▄ ░█░ █ █░▀░█ █▀█ ░█░ ██▄   ░█ █▄█ ░▀░   ▄█ █▀█ █▀█ █▄▀ ██▄ █▀▄ ▄█
-____________________________________________________________________________________________________________________________________________
-License:
-    The license is ATTRIBUTION 3.0
-
-    More license info here:
-        https://creativecommons.org/licenses/by/3.0/
-____________________________________________________________________________________________________________________________________________
-This shader has NOT been tested on any other PC configuration except the following:
-    CPU: Intel Core i5-6400
-    GPU: NVidia GTX 750Ti
-    RAM: 16GB
-    Windows: 10 x64
-    DirectX: 11
-____________________________________________________________________________________________________________________________________________
-*/
-
-Shader "Ultimate 10+ Shaders/Force Field"
+﻿Shader "Ultimate 10+ Shaders/Force Field Opaque"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        [HDR] _Color ("Color", Color) = (1,1,1,1)
+        [HDR] _GlowColor ("Glow Color", Color) = (1,1,1,1)
+        [HDR] _FillColor ("Fill Color", Color) = (0,0,1,1)
 
         _FresnelPower("Fresnel Power", Range(0, 10)) = 3
         _ScrollDirection ("Scroll Direction", float) = (0, 0, 0, 0)
+        _MinOpacity("Min Opacity", Range(0, 1)) = 0.3
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "IgnoreProjector"="True" "Queue"="Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderType"="Opaque" "Queue"="Geometry" }
         LOD 100
         Cull Back
         Lighting Off
@@ -86,16 +49,13 @@ Shader "Ultimate 10+ Shaders/Force Field"
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-            fixed4 _Color;
+            fixed4 _GlowColor;
+            fixed4 _FillColor;
             half _FresnelPower;
             half2 _ScrollDirection;
+            half _MinOpacity;
 
-            
-            // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-            // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-            // #pragma instancing_options assumeuniformscaling
             UNITY_INSTANCING_BUFFER_START(Props)
-                // put more per-instance properties here
             UNITY_INSTANCING_BUFFER_END(Props)
 
             fixed3 viewDir;
@@ -114,13 +74,20 @@ Shader "Ultimate 10+ Shaders/Force Field"
                 return output;
             }
 
-            fixed4 pixel;
             fixed4 frag (v2f input) : SV_Target
             {
-                pixel = tex2D(_MainTex, input.uv) * _Color * pow(_FresnelPower, input.rim);
-                pixel = lerp(0, pixel, input.rim);
-                
-                return clamp(pixel, 0, _Color);
+                fixed4 tex = tex2D(_MainTex, input.uv);
+
+                fixed4 blended = lerp(_FillColor, _GlowColor * pow(_FresnelPower, input.rim), input.rim);
+
+                fixed4 pixel = tex * blended;
+
+                float rimBlend = max(input.rim, _MinOpacity);
+                pixel = lerp(_FillColor * _MinOpacity, pixel, rimBlend);
+
+                pixel.a = 1; // force fully opaque, ignore any alpha falloff
+
+                return pixel;
             }
             ENDCG
         }

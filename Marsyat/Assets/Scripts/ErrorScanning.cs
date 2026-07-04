@@ -37,7 +37,7 @@ public class ErrorScanning : MonoBehaviour
 
     public void TriggerScan()
     {
-        UIMessageController.Instance.ShowMessage(2);
+        //UIMessageController.Instance.ShowMessage(2);
         errorCanvas.SetActive(true);
         MessageMessageManager.Instance.ShowMessage(2);
 

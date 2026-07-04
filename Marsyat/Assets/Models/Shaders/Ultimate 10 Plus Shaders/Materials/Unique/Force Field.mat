@@ -66,11 +66,12 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FresnelPower: 0.9
+    - _FresnelPower: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _MinOpacity: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -82,6 +83,8 @@ Material:
     m_Colors:
     - _Color: {r: 0.9333334, g: 0.8666667, b: 0.509804, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ScrollDirection: {r: 0.09, g: 0.09, b: 0.09, a: 0}
+    - _FillColor: {r: 0.5999999, g: 0.38803998, b: 0.22981124, a: 1}
+    - _GlowColor: {r: 0.20754719, g: 0.09583283, b: 0.05286577, a: 1}
+    - _ScrollDirection: {r: 0, g: 0.005, b: 0.001, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

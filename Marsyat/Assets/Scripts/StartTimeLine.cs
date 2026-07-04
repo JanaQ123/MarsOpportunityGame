@@ -10,23 +10,17 @@ public class StartTimeLine : MonoBehaviour
         timeline.Stop();
         timeline.gameObject.SetActive(false);
     }
-   public void StartTimeline()
+    public void StartTimeline()
     {
         timeline.gameObject.SetActive(true);
         timeline.Play();
         gameObject.SetActive(false);
 
-        StartCoroutine(AfterTimeline());
+        Invoke("AfterTimeline",10f);
     }
-
-    IEnumerator AfterTimeline()
+    public void AfterTimeline()
     {
-        // Wait until the timeline finishes
-        yield return new WaitForSeconds((float)timeline.duration);
-
-        // Wait 5 more seconds
-        yield return new WaitForSeconds(5f);
-
+        print("i showed it");
         UIMessageController.Instance.ShowMessage(3);
     }
 }

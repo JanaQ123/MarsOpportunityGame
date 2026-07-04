@@ -95,7 +95,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - GridDensity: 20
+    - GridDensity: 75
     - ObjectHeight: -1
     - ScanProgress: -0.74
     - _AddPrecomputedVelocity: 0
@@ -132,8 +132,8 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - BaseColor: {r: 0.19245276, g: 0.18555346, b: 0.18555346, a: 0}
-    - GridColor: {r: 0, g: 1, b: 0.8676558, a: 1}
+    - BaseColor: {r: 0.1641509, g: 0.8888458, b: 1, a: 0}
+    - GridColor: {r: 0.1870487, g: 0.6681301, b: 0.7132075, a: 1}
     - ScanLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
