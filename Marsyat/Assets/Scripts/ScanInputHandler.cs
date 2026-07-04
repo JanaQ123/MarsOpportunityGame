@@ -6,7 +6,6 @@ public class ScanInputHandler : MonoBehaviour
 {
     [SerializeField] private InputActionReference scanButton; // drag "Activate" here
     [SerializeField] private XRRayInteractor scanRay; // your dedicated scan ray
-
     void OnEnable() => scanButton.action.performed += OnScanPressed;
     void OnDisable() => scanButton.action.performed -= OnScanPressed;
 
@@ -15,8 +14,16 @@ public class ScanInputHandler : MonoBehaviour
         if (scanRay.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             var scannable = hit.collider.GetComponent<ScannableObject>();
+            var errorScan= hit.collider.GetComponent<ErrorScanning>();
+            if(errorScan!=null)
+            {
+                errorScan.TriggerScan();
+            }
             if (scannable != null && scannable.IsHovered)
+            {
                 scannable.TriggerScan();
+
+            }
         }
     }
 }

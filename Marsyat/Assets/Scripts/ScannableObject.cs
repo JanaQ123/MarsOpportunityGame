@@ -43,7 +43,7 @@ public class ScannableObject : MonoBehaviour
     public void TriggerScan()
     {
         if (isScanned) return;
-        print("i am scanning now");
+        
         StartCoroutine(ScanRoutine());
     }
 

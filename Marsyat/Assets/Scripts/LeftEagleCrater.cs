@@ -9,6 +9,8 @@ public class LeftEagleCrater : MonoBehaviour
         if (other.tag == "Player")
         {
             MessageMessageManager.Instance.ShowMessage(1);
+            UIMessageController.Instance.ShowMessage(1);
+
             if (!storm.isPlaying) storm.Play();
         }
        
